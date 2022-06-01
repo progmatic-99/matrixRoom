@@ -4,14 +4,78 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
     <script>
       const ROOM_ID = "<%= roomId %>";
     </script>
-    <script src="/socket.io/socket.io.js"></script>
+    <script
+      src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"
+      defer
+    ></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
     <title>Matrix Room</title>
   </head>
   <body>
-    <div id="video-grid"></div>
-    <script src="script.js"></script>
+    <main class="main">
+      <div class="left">
+        <div class="videos">
+          <div id="video-grid"></div>
+        </div>
+        <div class="controls">
+          <div class="block">
+            <div onclick="muteUnmute()" class="controls-button mute-button">
+              <i class="fas fa-microphone"></i>
+              <span>Mute</span>
+            </div>
+            <div onclick="playStop()" class="controls-button video-button">
+              <i class="fas fa-video"></i>
+              <span>Stop Video</span>
+            </div>
+          </div>
+          <div class="block">
+            <div class="controls-button">
+              <i class="fas fa-shield-alt"></i>
+              <span>Security</span>
+            </div>
+            <div class="controls-button">
+              <i class="fas fa-user-friends"></i>
+              <span>Participants</span>
+            </div>
+            <div class="controls-button">
+              <i class="fas fa-comment-alt"></i>
+              <span>Chat</span>
+            </div>
+          </div>
+          <div class="block">
+            <div class="controls-button">
+              <span class="leave-meeting">Leave Meeting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <header>
+          <h3>Chat</h3>
+        </header>
+        <div class="chat-window">
+          <ul class="messages"></ul>
+        </div>
+        <div class="msg-container">
+          <input
+            id="chat-msg"
+            type="text"
+            placeholder="Type your message here!!"
+          />
+        </div>
+      </div>
+    </main>
   </body>
 </html>
